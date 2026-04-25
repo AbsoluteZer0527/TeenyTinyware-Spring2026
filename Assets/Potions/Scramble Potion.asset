@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48afcae9dd4d14da58b985d10d33d6a1, type: 3}
-  m_Name: ScorePotionBad
+  m_Name: Scramble Potion
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
-  potionName: Score Potion Bad
-  recipe: 00000000010000000200000003000000
+  potionName: 
+  recipe: 00000000020000000000000003000000
   scoreValue: 300
-  effectType: 1
-  potionSprite: {fileID: 1185527514606905908, guid: abcad2c00f08606478cac2bc58a026f4, type: 3}
+  effectType: 0
+  potionSprite: {fileID: 6997616985800771554, guid: abcad2c00f08606478cac2bc58a026f4, type: 3}
+  effectDuration: 0
+  effectStrength: 0

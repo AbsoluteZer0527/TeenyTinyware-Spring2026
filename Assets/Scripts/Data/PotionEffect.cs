@@ -1,5 +1,7 @@
 public enum PotionEffect
 {
     AddScore,
-    SubtractScore
+    SubtractScore,
+    ScrambleInputs,
+    ReduceCooldown
 }

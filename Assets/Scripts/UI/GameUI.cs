@@ -64,6 +64,8 @@ public class GameUI : MonoBehaviour
     public Image[]  p1InventorySlots;
     public Image    p1ToggleSlot;
     public Image    p1CooldownBar;
+    public Image    p1ScrambleIcon;
+    public Image    p1CooldownIcon;
 
     [Header("P2")]
     public Cauldron p2Cauldron;
@@ -72,6 +74,11 @@ public class GameUI : MonoBehaviour
     public Image[]  p2InventorySlots;
     public Image    p2ToggleSlot;
     public Image    p2CooldownBar;
+    public Image    p2ScrambleIcon;
+    public Image    p2CooldownIcon;
+
+    [Header("Status effect strobe")]
+    public float strobeSpeed = 4f;
 
     private static readonly int BirdLoseHash = Animator.StringToHash("Bird_lose");
     private static readonly int CatLoseHash  = Animator.StringToHash("Cat_lose");
@@ -86,11 +93,6 @@ public class GameUI : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < ingredientSprites.Length; i++)
-        {
-            if (i < p1InventorySlots.Length) p1InventorySlots[i].sprite = ingredientSprites[i];
-            if (i < p2InventorySlots.Length) p2InventorySlots[i].sprite = ingredientSprites[i];
-        }
         ResetScoreSlots(p1ScoreSlots);
         ResetScoreSlots(p2ScoreSlots);
         SetDeltaGroupAlpha(p1DeltaSign, p1DeltaDigits, 0f);
@@ -119,8 +121,10 @@ public class GameUI : MonoBehaviour
 
         UpdateCauldronSlots(p1CauldronSlots, p1Cauldron.Ingredients);
         UpdateCauldronSlots(p2CauldronSlots, p2Cauldron.Ingredients);
-        UpdateInventory(GameManager.Instance.player1, p1ToggleSlot, p1CooldownBar, false);
-        UpdateInventory(GameManager.Instance.player2, p2ToggleSlot, p2CooldownBar, true);
+        UpdateInventory(GameManager.Instance.player1, p1InventorySlots, p1ToggleSlot, p1CooldownBar, false);
+        UpdateInventory(GameManager.Instance.player2, p2InventorySlots, p2ToggleSlot, p2CooldownBar, true);
+        UpdateStatusIcons(GameManager.Instance.player1, p1ScrambleIcon, p1CooldownIcon);
+        UpdateStatusIcons(GameManager.Instance.player2, p2ScrambleIcon, p2CooldownIcon);
 
         int actual1 = GameManager.Instance.GetScore(0);
         int actual2 = GameManager.Instance.GetScore(1);
@@ -331,8 +335,11 @@ public class GameUI : MonoBehaviour
         }
     }
 
-    private void UpdateInventory(Player player, Image toggleSlot, Image cooldownBar, bool invertToggle = false)
+    private void UpdateInventory(Player player, Image[] inventorySlots, Image toggleSlot, Image cooldownBar, bool invertToggle = false)
     {
+        for (int i = 0; i < inventorySlots.Length && i < ingredientSprites.Length; i++)
+            inventorySlots[i].sprite = ingredientSprites[player.IngredientOrder[i]];
+
         if (toggleSlot != null && toggleSprites.Length >= 2)
         {
             bool targeting = invertToggle ? !player.isTargetingOpponent : player.isTargetingOpponent;
@@ -340,5 +347,27 @@ public class GameUI : MonoBehaviour
         }
         if (cooldownBar != null)
             cooldownBar.fillAmount = player.CooldownFraction;
+    }
+
+    private void UpdateStatusIcons(Player player, Image scrambleIcon, Image cooldownIcon)
+    {
+        if (scrambleIcon != null)
+        {
+            scrambleIcon.enabled = player.IsScrambled;
+            if (player.IsScrambled)
+            {
+                float alpha = (Mathf.Sin(Time.time * strobeSpeed) + 1f) * 0.5f;
+                var c = scrambleIcon.color; c.a = alpha; scrambleIcon.color = c;
+            }
+        }
+        if (cooldownIcon != null)
+        {
+            cooldownIcon.enabled = player.HasCooldownBoost;
+            if (player.HasCooldownBoost)
+            {
+                float alpha = (Mathf.Sin(Time.time * strobeSpeed) + 1f) * 0.5f;
+                var c = cooldownIcon.color; c.a = alpha; cooldownIcon.color = c;
+            }
+        }
     }
 }

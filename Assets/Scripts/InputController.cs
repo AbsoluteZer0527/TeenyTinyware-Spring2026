@@ -52,10 +52,10 @@ public class InputController : MonoBehaviour
 
     private void HandlePlayer(Player player, PlayerInputActions actions)
     {
-        if (actions.ingredient1.triggered) player.TryAddIngredient(_ingredientOrder[0]);
-        if (actions.ingredient2.triggered) player.TryAddIngredient(_ingredientOrder[1]);
-        if (actions.ingredient3.triggered) player.TryAddIngredient(_ingredientOrder[2]);
-        if (actions.ingredient4.triggered) player.TryAddIngredient(_ingredientOrder[3]);
+        if (actions.ingredient1.triggered) player.TryAddIngredient(_ingredientOrder[player.IngredientOrder[0]]);
+        if (actions.ingredient2.triggered) player.TryAddIngredient(_ingredientOrder[player.IngredientOrder[1]]);
+        if (actions.ingredient3.triggered) player.TryAddIngredient(_ingredientOrder[player.IngredientOrder[2]]);
+        if (actions.ingredient4.triggered) player.TryAddIngredient(_ingredientOrder[player.IngredientOrder[3]]);
         if (actions.toggle.triggered)      player.ToggleTarget();
     }
 }

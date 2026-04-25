@@ -56,6 +56,9 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator EvaluateRound()
     {
+        player1.OnRoundStart();
+        player2.OnRoundStart();
+
         int score1 = RecipeEvaluator.Evaluate(cauldron1.Ingredients, CurrentPotion.recipe);
         int score2 = RecipeEvaluator.Evaluate(cauldron2.Ingredients, CurrentPotion.recipe);
         int winnerIndex = score2 > score1 ? 1 : 0;
@@ -68,6 +71,18 @@ public class GameManager : MonoBehaviour
         LastDeltas[1] = winnerIndex == 1 ? scoreChange : 0;
         _totalScores[0] += LastDeltas[0];
         _totalScores[1] += LastDeltas[1];
+
+        Player winner = winnerIndex == 0 ? player1 : player2;
+        Player loser  = winnerIndex == 0 ? player2 : player1;
+        switch (CurrentPotion.effectType)
+        {
+            case PotionEffect.ScrambleInputs:
+                winner.ApplyScramble(CurrentPotion.effectDuration);
+                break;
+            case PotionEffect.ReduceCooldown:
+                winner.ApplyCooldownBoost(1f - CurrentPotion.effectStrength, CurrentPotion.effectDuration);
+                break;
+        }
 
         LastResult1 = RecipeEvaluator.EvaluateSlots(cauldron1.Ingredients, CurrentPotion.recipe);
         LastResult2 = RecipeEvaluator.EvaluateSlots(cauldron2.Ingredients, CurrentPotion.recipe);
