@@ -3343,6 +3343,17 @@ MonoBehaviour:
   toggleSprites:
   - {fileID: 5005683871689957750, guid: 6b8656c8e058aab4b96867828e0e8f02, type: 3}
   - {fileID: -536646282496205833, guid: 6b8656c8e058aab4b96867828e0e8f02, type: 3}
+  recipeSlots:
+  - {fileID: 1930378490}
+  - {fileID: 2054930263}
+  - {fileID: 481914323}
+  - {fileID: 1341404334}
+  spinInterval: 0.07
+  slotStopTimes:
+  - 0.7
+  - 1
+  - 1.3
+  - 1.6
   p1CauldronSlots:
   - {fileID: 201933334}
   - {fileID: 1275287126}
@@ -3367,7 +3378,6 @@ MonoBehaviour:
   - {fileID: 1777078294}
   p2ToggleSlot: {fileID: 1758479789}
   p2CooldownBar: {fileID: 940295656}
-  recipeText: {fileID: 0}
   p1ScoreText: {fileID: 0}
   p2ScoreText: {fileID: 0}
 --- !u!1660057539 &9223372036854775807

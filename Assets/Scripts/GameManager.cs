@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public PotionData CurrentPotion { get; private set; }
 
     private readonly int[] _totalScores = new int[2];
-    private bool _evaluating;
+    private int _filledCount;
 
     private void Awake()
     {
@@ -36,9 +36,9 @@ public class GameManager : MonoBehaviour
 
     public void OnCauldronFull(Cauldron _)
     {
-        if (_evaluating) return;
-        _evaluating = true;
-        EvaluateRound();
+        _filledCount++;
+        if (_filledCount >= 2)
+            EvaluateRound();
     }
 
     private void EvaluateRound()
@@ -52,10 +52,10 @@ public class GameManager : MonoBehaviour
 
     private void LoadNewPotion()
     {
+        _filledCount = 0;
         cauldron1.Clear();
         cauldron2.Clear();
         CurrentPotion = PotionDatabase.Instance.GetNextPotion();
-        _evaluating = false;
         OnPotionLoaded?.Invoke();
     }
 
