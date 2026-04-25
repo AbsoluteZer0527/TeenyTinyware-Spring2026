@@ -5,6 +5,10 @@ public class Cauldron : MonoBehaviour
 {
     public int ownerIndex; // 0 = P1, 1 = P2
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip   plopClip;
+
     private readonly List<IngredientType> _ingredients = new();
     public IReadOnlyList<IngredientType> Ingredients => _ingredients;
 
@@ -15,6 +19,8 @@ public class Cauldron : MonoBehaviour
             return;
 
         _ingredients.Add(ingredient);
+        if (audioSource != null && plopClip != null)
+            audioSource.PlayOneShot(plopClip);
 
         if (_ingredients.Count == current.recipe.Length)
             GameManager.Instance.OnCauldronFull(this);

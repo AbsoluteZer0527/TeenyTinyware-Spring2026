@@ -72,6 +72,9 @@ public class GameUI : MonoBehaviour
     public Image    p2ToggleSlot;
     public Image    p2CooldownBar;
 
+    private static readonly int BirdLoseHash = Animator.StringToHash("Bird_lose");
+    private static readonly int CatLoseHash  = Animator.StringToHash("Cat_lose");
+
     private bool      _subscribed;
     private Coroutine _spinCoroutine;
     private Coroutine _potionSpinCoroutine;
@@ -155,8 +158,18 @@ public class GameUI : MonoBehaviour
 
         if (GameManager.Instance.CurrentPotion.effectType == PotionEffect.SubtractScore)
         {
-            if (delta1 != 0) GameManager.Instance.player1.GetComponent<Animator>()?.SetTrigger("Bird_lose");
-            if (delta2 != 0) GameManager.Instance.player2.GetComponent<Animator>()?.SetTrigger("Cat_lose");
+            if (delta1 != 0)
+            {
+                var anim1 = GameManager.Instance.player1.GetComponent<Animator>();
+                if (anim1 != null) anim1.SetTrigger(BirdLoseHash);
+                if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(AudioManager.Instance.p1LoseClip);
+            }
+            if (delta2 != 0)
+            {
+                var anim2 = GameManager.Instance.player2.GetComponent<Animator>();
+                if (anim2 != null) anim2.SetTrigger(CatLoseHash);
+                if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(AudioManager.Instance.p2LoseClip);
+            }
         }
     }
 
