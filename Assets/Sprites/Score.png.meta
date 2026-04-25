@@ -165,9 +165,9 @@ TextureImporter:
       name: Score_1
       rect:
         serializedVersion: 2
-        x: 300
+        x: 305
         y: 926
-        width: 90
+        width: 85
         height: 73
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
