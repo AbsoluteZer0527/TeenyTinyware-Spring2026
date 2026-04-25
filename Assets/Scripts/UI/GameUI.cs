@@ -1,18 +1,23 @@
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
+    [Header("Ingredient sprites — Eye, Mushroom, Root, Crystal")]
+    public Sprite[] ingredientSprites;
+
+    [Header("P1 cauldron slots (slot 1-4)")]
+    public Image[] p1Slots;
+
+    [Header("P2 cauldron slots (slot 1-4)")]
+    public Image[] p2Slots;
+
+    [Header("Text")]
     public TextMeshProUGUI recipeText;
-
     public TextMeshProUGUI p1ScoreText;
-    public TextMeshProUGUI p1CauldronText;
-    public TextMeshProUGUI p1ToggleText;
-
     public TextMeshProUGUI p2ScoreText;
-    public TextMeshProUGUI p2CauldronText;
-    public TextMeshProUGUI p2ToggleText;
 
     private bool _subscribed;
 
@@ -27,13 +32,11 @@ public class GameUI : MonoBehaviour
             _subscribed = true;
         }
 
-        p1ScoreText.text    = $"P1 Score: {GameManager.Instance.GetScore(0)}";
-        p1CauldronText.text = "P1: " + ListToString(GameManager.Instance.cauldron1.Ingredients);
-        p1ToggleText.text   = GameManager.Instance.player1.isTargetingOpponent ? "Targeting: OPPONENT" : "Targeting: SELF";
+        UpdateSlots(p1Slots, GameManager.Instance.cauldron1.Ingredients);
+        UpdateSlots(p2Slots, GameManager.Instance.cauldron2.Ingredients);
 
-        p2ScoreText.text    = $"P2 Score: {GameManager.Instance.GetScore(1)}";
-        p2CauldronText.text = "P2: " + ListToString(GameManager.Instance.cauldron2.Ingredients);
-        p2ToggleText.text   = GameManager.Instance.player2.isTargetingOpponent ? "Targeting: OPPONENT" : "Targeting: SELF";
+        if (p1ScoreText != null) p1ScoreText.text = $"P1: {GameManager.Instance.GetScore(0)}";
+        if (p2ScoreText != null) p2ScoreText.text = $"P2: {GameManager.Instance.GetScore(1)}";
     }
 
     private void OnDestroy()
@@ -42,13 +45,27 @@ public class GameUI : MonoBehaviour
             GameManager.Instance.OnPotionLoaded -= RefreshRecipe;
     }
 
-    private void RefreshRecipe()
+    private void UpdateSlots(Image[] slots, System.Collections.Generic.IReadOnlyList<IngredientType> ingredients)
     {
-        var potion = GameManager.Instance.CurrentPotion;
-        if (potion == null) return;
-        recipeText.text = $"Recipe ({potion.potionName}): {string.Join(" → ", potion.recipe)}";
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (i < ingredients.Count)
+            {
+                slots[i].sprite = ingredientSprites[(int)ingredients[i]];
+                slots[i].enabled = true;
+            }
+            else
+            {
+                slots[i].enabled = false;
+            }
+        }
     }
 
-    private string ListToString(System.Collections.Generic.IReadOnlyList<IngredientType> list)
-        => list.Count == 0 ? "—" : string.Join(", ", list.Select(i => i.ToString()));
+    private void RefreshRecipe()
+    {
+        if (recipeText == null) return;
+        var potion = GameManager.Instance.CurrentPotion;
+        if (potion == null) return;
+        recipeText.text = $"Recipe: {string.Join(" → ", potion.recipe.Select(r => r.ToString()))}";
+    }
 }
