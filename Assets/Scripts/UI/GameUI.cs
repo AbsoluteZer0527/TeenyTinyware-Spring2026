@@ -128,8 +128,8 @@ public class GameUI : MonoBehaviour
         _displayedScore2 = Mathf.MoveTowards(_displayedScore2, actual2, counterSpeed * Time.deltaTime);
         int rounded1 = Mathf.RoundToInt(_displayedScore1);
         int rounded2 = Mathf.RoundToInt(_displayedScore2);
-        DisplayNumber(p1ScoreDigitSlots, scoreNumberSprites, rounded1);
-        DisplayNumber(p2ScoreDigitSlots, scoreNumberSprites, rounded2);
+        DisplayScore(p1ScoreDigitSlots, scoreNumberSprites, rounded1);
+        DisplayScore(p2ScoreDigitSlots, scoreNumberSprites, rounded2);
         if (p1ScoreSign != null) { p1ScoreSign.sprite = minusSprite; p1ScoreSign.enabled = rounded1 < 0; }
         if (p2ScoreSign != null) { p2ScoreSign.sprite = minusSprite; p2ScoreSign.enabled = rounded2 < 0; }
     }
@@ -199,6 +199,23 @@ public class GameUI : MonoBehaviour
         roundDigitSlots[1].enabled = true;
         roundDigitSlots[1].sprite  = roundNumberSprites[round % 10];
         roundDigitSlots[1].rectTransform.anchoredPosition = new Vector2(twoDigit ? _roundCenterX + half : _roundCenterX, _roundSlotsY);
+    }
+
+    private void DisplayScore(Image[] slots, Sprite[] sprites, int number)
+    {
+        if (slots == null || slots.Length == 0 || sprites == null || sprites.Length < 10) return;
+        string digits = Mathf.Abs(number).ToString().PadLeft(slots.Length, '0');
+        if (digits.Length > slots.Length) digits = digits[^slots.Length..];
+        bool significant = false;
+        for (int i = 0; i < slots.Length; i++)
+        {
+            bool lastSlot     = i == slots.Length - 1;
+            bool leadingZero  = !significant && digits[i] == '0' && !lastSlot;
+            if (leadingZero) { slots[i].enabled = false; continue; }
+            significant      = true;
+            slots[i].enabled = true;
+            slots[i].sprite  = sprites[digits[i] - '0'];
+        }
     }
 
     private void DisplayNumber(Image[] slots, Sprite[] sprites, int number)
