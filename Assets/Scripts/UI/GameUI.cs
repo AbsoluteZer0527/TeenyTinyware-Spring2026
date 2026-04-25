@@ -1,12 +1,12 @@
 using System.Collections;
-using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
-    private static readonly Color ColorGreen  = new Color(0.18f, 0.80f, 0.44f, 0.6f);
-    private static readonly Color ColorYellow = new Color(0.95f, 0.77f, 0.06f, 0.6f);
+    private static readonly Color ColorGreen  = new(0.18f, 0.80f, 0.44f, 0.6f);
+    private static readonly Color ColorYellow = new(0.95f, 0.77f, 0.06f, 0.6f);
 
     [Header("Ingredient sprites — Eye, Mushroom, Root, Crystal")]
     public Sprite[] ingredientSprites;
@@ -15,9 +15,9 @@ public class GameUI : MonoBehaviour
     public Sprite[] toggleSprites;
 
     [Header("Potion slot")]
-    public Image   potionSlot;
+    public Image    potionSlot;
     public Sprite[] allPotionSprites;
-    public float   potionSpinDuration = 1.4f;
+    public float    potionSpinDuration = 1.4f;
 
     [Header("Recipe slots")]
     public Image[] recipeSlots;
@@ -26,32 +26,32 @@ public class GameUI : MonoBehaviour
 
     [Header("Round display")]
     public Image[]  roundDigitSlots;
-    public Sprite[] roundNumberSprites; // 0-9 from 'Round numbers.png'
+    public Sprite[] roundNumberSprites;
 
     [Header("P1 Score")]
-    public Image    p1ScoreSign;        // hidden when positive, shows minus when negative
-    public Image[]  p1ScoreDigitSlots;
-    public Image    p1DeltaSign;
-    public Image[]  p1DeltaDigits;
+    public Image   p1ScoreSign;
+    public Image[] p1ScoreDigitSlots;
+    public Image   p1DeltaSign;
+    public Image[] p1DeltaDigits;
 
     [Header("P2 Score")]
-    public Image    p2ScoreSign;
-    public Image[]  p2ScoreDigitSlots;
-    public Image    p2DeltaSign;
-    public Image[]  p2DeltaDigits;
+    public Image   p2ScoreSign;
+    public Image[] p2ScoreDigitSlots;
+    public Image   p2DeltaSign;
+    public Image[] p2DeltaDigits;
 
     [Header("Delta sign sprites")]
     public Sprite plusSprite;
     public Sprite minusSprite;
 
-    [Header("Score number sprites (0-9 from 'Numbers.png')")]
+    [Header("Score number sprites (0-9)")]
     public Sprite[] scoreNumberSprites;
 
     [Header("Score counter")]
-    public float counterSpeed     = 60f;  // digits per second
-    public float deltaFadeIn      = 0.2f;
-    public float deltaHold        = 1.2f;
-    public float deltaFadeOut     = 0.5f;
+    public float counterSpeed = 60f;
+    public float deltaFadeIn  = 0.2f;
+    public float deltaHold    = 1.2f;
+    public float deltaFadeOut = 0.5f;
 
     [Header("Wordle slot flash")]
     public float flashDuration = 0.4f;
@@ -72,12 +72,11 @@ public class GameUI : MonoBehaviour
     public Image    p2ToggleSlot;
     public Image    p2CooldownBar;
 
-    private bool _subscribed;
+    private bool      _subscribed;
     private Coroutine _spinCoroutine;
     private Coroutine _potionSpinCoroutine;
-
-    private float _displayedScore1;
-    private float _displayedScore2;
+    private float     _displayedScore1;
+    private float     _displayedScore2;
 
     private void Start()
     {
@@ -109,7 +108,6 @@ public class GameUI : MonoBehaviour
         UpdateInventory(GameManager.Instance.player1, p1ToggleSlot, p1CooldownBar, false);
         UpdateInventory(GameManager.Instance.player2, p2ToggleSlot, p2CooldownBar, true);
 
-        // Animate score counters toward actual values
         int actual1 = GameManager.Instance.GetScore(0);
         int actual2 = GameManager.Instance.GetScore(1);
         _displayedScore1 = Mathf.MoveTowards(_displayedScore1, actual1, counterSpeed * Time.deltaTime);
@@ -162,8 +160,7 @@ public class GameUI : MonoBehaviour
     {
         if (slots == null || slots.Length == 0 || sprites == null || sprites.Length < 10) return;
         string digits = Mathf.Abs(number).ToString().PadLeft(slots.Length, '0');
-        // Take only the rightmost N digits if number overflows slot count
-        if (digits.Length > slots.Length) digits = digits.Substring(digits.Length - slots.Length);
+        if (digits.Length > slots.Length) digits = digits[^slots.Length..];
         for (int i = 0; i < slots.Length; i++)
             slots[i].sprite = sprites[digits[i] - '0'];
     }
@@ -212,13 +209,13 @@ public class GameUI : MonoBehaviour
     private IEnumerator FlashSlot(Image slot, Color target)
     {
         slot.enabled = true;
-        Color bright  = new Color(target.r, target.g, target.b, 1f);
+        Color bright  = new(target.r, target.g, target.b, 1f);
         float elapsed = 0f;
         while (elapsed < flashDuration) { elapsed += Time.deltaTime; slot.color = Color.Lerp(bright, target, elapsed / flashDuration); yield return null; }
         slot.color = target;
     }
 
-    private void ResetScoreSlots(Image[] slots) { foreach (var s in slots) s.enabled = false; }
+    private static void ResetScoreSlots(Image[] slots) { foreach (var s in slots) s.enabled = false; }
 
     // ── Spin animations ──────────────────────────────────────────────────
 
@@ -251,14 +248,19 @@ public class GameUI : MonoBehaviour
                     recipeSlots[i].enabled = true;
                 }
             }
-            if (elapsed >= nextFlip) { nextFlip += spinInterval; for (int i = 0; i < recipeSlots.Length; i++) if (!stopped[i]) recipeSlots[i].sprite = ingredientSprites[Random.Range(0, ingredientSprites.Length)]; }
+            if (elapsed >= nextFlip)
+            {
+                nextFlip += spinInterval;
+                for (int i = 0; i < recipeSlots.Length; i++)
+                    if (!stopped[i]) recipeSlots[i].sprite = ingredientSprites[Random.Range(0, ingredientSprites.Length)];
+            }
             yield return null;
         }
     }
 
     // ── Per-frame slot updates ───────────────────────────────────────────
 
-    private void UpdateCauldronSlots(Image[] slots, System.Collections.Generic.IReadOnlyList<IngredientType> ingredients)
+    private void UpdateCauldronSlots(Image[] slots, IReadOnlyList<IngredientType> ingredients)
     {
         for (int i = 0; i < slots.Length; i++)
         {
