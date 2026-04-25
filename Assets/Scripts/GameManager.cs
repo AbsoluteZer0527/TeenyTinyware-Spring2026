@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
 
         LastResult1 = RecipeEvaluator.EvaluateSlots(cauldron1.Ingredients, CurrentPotion.recipe);
         LastResult2 = RecipeEvaluator.EvaluateSlots(cauldron2.Ingredients, CurrentPotion.recipe);
+        AudioManager.Instance?.PlayScore(LastDeltas[0] != 0 ? LastDeltas[0] : LastDeltas[1]);
         OnRoundEvaluated?.Invoke();
 
         yield return new WaitForSeconds(roundEndDelay);
@@ -91,6 +92,7 @@ public class GameManager : MonoBehaviour
         cauldron1.Clear();
         cauldron2.Clear();
         CurrentPotion = PotionDatabase.Instance.GetNextPotion();
+        AudioManager.Instance?.PlaySpin();
         OnPotionLoaded?.Invoke();
     }
 

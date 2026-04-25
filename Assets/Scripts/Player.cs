@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public void ToggleTarget()
     {
         isTargetingOpponent = !isTargetingOpponent;
+        AudioManager.Instance?.PlaySwitch();
     }
 
     public void TryAddIngredient(IngredientType ingredient)
