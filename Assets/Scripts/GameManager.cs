@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     public event System.Action OnPotionLoaded;
     public event System.Action OnRoundEvaluated;
+    public event System.Action OnGameOver;
 
     [Header("Setup")]
     public Player player1;
@@ -14,12 +15,17 @@ public class GameManager : MonoBehaviour
     public Cauldron cauldron1;
     public Cauldron cauldron2;
 
+    [Header("Rounds")]
+    public int maxRounds = 5;
+
     [Header("Timing")]
     public float roundEndDelay = 4f;
 
-    public PotionData CurrentPotion { get; private set; }
-    public SlotResult[] LastResult1 { get; private set; }
-    public SlotResult[] LastResult2 { get; private set; }
+    public PotionData CurrentPotion  { get; private set; }
+    public int        CurrentRound   { get; private set; } = 1;
+    public SlotResult[] LastResult1  { get; private set; }
+    public SlotResult[] LastResult2  { get; private set; }
+    public int[]      LastDeltas     { get; private set; } = new int[2];
 
     private readonly int[] _totalScores = new int[2];
     private int _filledCount;
@@ -57,13 +63,25 @@ public class GameManager : MonoBehaviour
         int scoreChange = CurrentPotion.effectType == PotionEffect.SubtractScore
             ? -CurrentPotion.scoreValue
             :  CurrentPotion.scoreValue;
-        _totalScores[winnerIndex] += scoreChange;
+
+        LastDeltas[0] = winnerIndex == 0 ? scoreChange : 0;
+        LastDeltas[1] = winnerIndex == 1 ? scoreChange : 0;
+        _totalScores[0] += LastDeltas[0];
+        _totalScores[1] += LastDeltas[1];
 
         LastResult1 = RecipeEvaluator.EvaluateSlots(cauldron1.Ingredients, CurrentPotion.recipe);
         LastResult2 = RecipeEvaluator.EvaluateSlots(cauldron2.Ingredients, CurrentPotion.recipe);
         OnRoundEvaluated?.Invoke();
 
         yield return new WaitForSeconds(roundEndDelay);
+
+        if (CurrentRound >= maxRounds)
+        {
+            OnGameOver?.Invoke();
+            yield break;
+        }
+
+        CurrentRound++;
         LoadNewPotion();
     }
 
