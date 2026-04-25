@@ -26,15 +26,12 @@ public class Player : MonoBehaviour
             _cooldownTimer -= Time.deltaTime;
     }
 
-<<<<<<< Updated upstream
     public void ToggleTarget()
     {
         isTargetingOpponent = !isTargetingOpponent;
         AudioManager.Instance?.PlaySwitch();
     }
-=======
-    public void ToggleTarget() => isTargetingOpponent = !isTargetingOpponent;
->>>>>>> Stashed changes
+
 
     public void TryAddIngredient(IngredientType ingredient)
     {

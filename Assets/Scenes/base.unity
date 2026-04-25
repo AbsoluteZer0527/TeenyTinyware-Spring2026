@@ -6634,6 +6634,14 @@ MonoBehaviour:
   bubbleClip: {fileID: 8300000, guid: e347e57cdc58d4669895ea70e71f947b, type: 3}
   p1LoseClip: {fileID: 8300000, guid: 50c5350aba83648e8b0b9ce51f3b02cb, type: 3}
   p2LoseClip: {fileID: 8300000, guid: 49a02cd9b40ed4fc69cef51a2558eeb6, type: 3}
+  scoreUpClip: {fileID: 0}
+  scoreDownClip: {fileID: 0}
+  spinClip: {fileID: 0}
+  switchClip: {fileID: 0}
+  catIdleClip: {fileID: 0}
+  catIdleInterval: {x: 6, y: 14}
+  crowIdleClip: {fileID: 0}
+  crowIdleInterval: {x: 8, y: 18}
 --- !u!4 &1705057104
 Transform:
   m_ObjectHideFlags: 0
@@ -8596,7 +8604,10 @@ MonoBehaviour:
   - {fileID: -536646282496205833, guid: 6b8656c8e058aab4b96867828e0e8f02, type: 3}
   potionSlot: {fileID: 690566621}
   allPotionSprites:
+  - {fileID: 1185527514606905908, guid: abcad2c00f08606478cac2bc58a026f4, type: 3}
   - {fileID: -1061600653231999548, guid: abcad2c00f08606478cac2bc58a026f4, type: 3}
+  - {fileID: -3065595510956808684, guid: abcad2c00f08606478cac2bc58a026f4, type: 3}
+  - {fileID: 6997616985800771554, guid: abcad2c00f08606478cac2bc58a026f4, type: 3}
   potionSpinDuration: 1.4
   recipeSlots:
   - {fileID: 1930378490}
@@ -8682,6 +8693,8 @@ MonoBehaviour:
   - {fileID: 2086935587}
   p1ToggleSlot: {fileID: 537746629}
   p1CooldownBar: {fileID: 36796805}
+  p1ScrambleIcon: {fileID: 0}
+  p1CooldownIcon: {fileID: 0}
   p2Cauldron: {fileID: 1178333411}
   p2CauldronSlots:
   - {fileID: 669993911}
@@ -8700,6 +8713,9 @@ MonoBehaviour:
   - {fileID: 1777078294}
   p2ToggleSlot: {fileID: 1758479789}
   p2CooldownBar: {fileID: 940295656}
+  p2ScrambleIcon: {fileID: 0}
+  p2CooldownIcon: {fileID: 0}
+  strobeSpeed: 4
 --- !u!1 &2134959866
 GameObject:
   m_ObjectHideFlags: 0
