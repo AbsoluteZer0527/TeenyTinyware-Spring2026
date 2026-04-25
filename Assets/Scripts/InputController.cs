@@ -18,6 +18,7 @@ public class InputController : MonoBehaviour
     {
         // Player 1: keys 1-4 = ingredients, 5 = toggle target
         if (Input.GetKeyDown(KeyCode.Alpha1)) player1.TryAddIngredient(_ingredientOrder[0]);
+        if (Input.GetKeyDown(KeyCode.Alpha1)) Debug.Log("alpha1");
         if (Input.GetKeyDown(KeyCode.Alpha2)) player1.TryAddIngredient(_ingredientOrder[1]);
         if (Input.GetKeyDown(KeyCode.Alpha3)) player1.TryAddIngredient(_ingredientOrder[2]);
         if (Input.GetKeyDown(KeyCode.Alpha4)) player1.TryAddIngredient(_ingredientOrder[3]);
