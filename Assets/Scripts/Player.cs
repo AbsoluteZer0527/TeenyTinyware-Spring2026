@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
     public float baseCooldown = 1f;
     public bool isTargetingOpponent;
 
-    public Cauldron OwnCauldron { get; set; }
+    public Cauldron OwnCauldron      { get; set; }
     public Cauldron OpponentCauldron { get; set; }
 
     public int[]  IngredientOrder       { get; private set; } = { 0, 1, 2, 3 };
