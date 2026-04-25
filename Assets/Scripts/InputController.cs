@@ -1,11 +1,38 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+
+[System.Serializable]
+public class PlayerInputActions
+{
+    public InputAction ingredient1;
+    public InputAction ingredient2;
+    public InputAction ingredient3;
+    public InputAction ingredient4;
+    public InputAction toggle;
+
+    public void Enable()
+    {
+        ingredient1.Enable(); ingredient2.Enable();
+        ingredient3.Enable(); ingredient4.Enable();
+        toggle.Enable();
+    }
+
+    public void Disable()
+    {
+        ingredient1.Disable(); ingredient2.Disable();
+        ingredient3.Disable(); ingredient4.Disable();
+        toggle.Disable();
+    }
+}
 
 public class InputController : MonoBehaviour
 {
     public Player player1;
-    public Player player2;
+    public PlayerInputActions p1Actions;
 
-    // Maps Player 1's ingredient keys (1-4) to IngredientType values 0-3
+    public Player player2;
+    public PlayerInputActions p2Actions;
+
     private static readonly IngredientType[] _ingredientOrder =
     {
         IngredientType.Eye,
@@ -14,21 +41,21 @@ public class InputController : MonoBehaviour
         IngredientType.Crystal
     };
 
+    private void OnEnable()  { p1Actions.Enable();  p2Actions.Enable(); }
+    private void OnDisable() { p1Actions.Disable(); p2Actions.Disable(); }
+
     private void Update()
     {
-        // Player 1: keys 1-4 = ingredients, 5 = toggle target
-        if (Input.GetKeyDown(KeyCode.Alpha1)) player1.TryAddIngredient(_ingredientOrder[0]);
-        if (Input.GetKeyDown(KeyCode.Alpha1)) Debug.Log("alpha1");
-        if (Input.GetKeyDown(KeyCode.Alpha2)) player1.TryAddIngredient(_ingredientOrder[1]);
-        if (Input.GetKeyDown(KeyCode.Alpha3)) player1.TryAddIngredient(_ingredientOrder[2]);
-        if (Input.GetKeyDown(KeyCode.Alpha4)) player1.TryAddIngredient(_ingredientOrder[3]);
-        if (Input.GetKeyDown(KeyCode.Alpha5)) player1.ToggleTarget();
+        HandlePlayer(player1, p1Actions);
+        HandlePlayer(player2, p2Actions);
+    }
 
-        // Player 2: keys 6-9 = ingredients, 0 = toggle target
-        if (Input.GetKeyDown(KeyCode.Alpha6)) player2.TryAddIngredient(_ingredientOrder[0]);
-        if (Input.GetKeyDown(KeyCode.Alpha7)) player2.TryAddIngredient(_ingredientOrder[1]);
-        if (Input.GetKeyDown(KeyCode.Alpha8)) player2.TryAddIngredient(_ingredientOrder[2]);
-        if (Input.GetKeyDown(KeyCode.Alpha9)) player2.TryAddIngredient(_ingredientOrder[3]);
-        if (Input.GetKeyDown(KeyCode.Alpha0)) player2.ToggleTarget();
+    private void HandlePlayer(Player player, PlayerInputActions actions)
+    {
+        if (actions.ingredient1.triggered) player.TryAddIngredient(_ingredientOrder[0]);
+        if (actions.ingredient2.triggered) player.TryAddIngredient(_ingredientOrder[1]);
+        if (actions.ingredient3.triggered) player.TryAddIngredient(_ingredientOrder[2]);
+        if (actions.ingredient4.triggered) player.TryAddIngredient(_ingredientOrder[3]);
+        if (actions.toggle.triggered)      player.ToggleTarget();
     }
 }
