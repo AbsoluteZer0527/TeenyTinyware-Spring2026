@@ -1802,7 +1802,179 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputController
   player1: {fileID: 1739973729}
+  p1Actions:
+    ingredient1:
+      m_Name: Ingredient 1
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: b30f0b21-4f83-44ef-afb3-89cd2a97d165
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: ada40c1c-063a-43e9-b173-f4302eb21dcb
+        m_Path: <Keyboard>/1
+        m_Interactions: Tap
+        m_Processors: 
+        m_Groups: 
+        m_Action: Ingredient 1
+        m_Flags: 0
+      m_Flags: 0
+    ingredient2:
+      m_Name: Ingredient 2
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: f0aaa756-842e-4670-bb9a-89f72749d35e
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: e14a4e1e-a393-4313-b51c-0036bdc404ce
+        m_Path: <Keyboard>/2
+        m_Interactions: Tap
+        m_Processors: 
+        m_Groups: 
+        m_Action: Ingredient 2
+        m_Flags: 0
+      m_Flags: 0
+    ingredient3:
+      m_Name: Ingredient 3
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: ebdda31b-ab34-4e6c-9d15-613ac1483771
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: d21715f9-7faa-4291-be57-c7f2f425788d
+        m_Path: <Keyboard>/3
+        m_Interactions: Tap
+        m_Processors: 
+        m_Groups: 
+        m_Action: Ingredient 3
+        m_Flags: 0
+      m_Flags: 0
+    ingredient4:
+      m_Name: Ingredient 4
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: c5277ddf-4ee1-41de-bd32-6fb10d6be2a2
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 0c6c1599-a1aa-49cb-b114-e8f6fb26b7da
+        m_Path: <Keyboard>/4
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Ingredient 4
+        m_Flags: 0
+      m_Flags: 0
+    toggle:
+      m_Name: Toggle
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: fe3f45a2-8e1e-4c06-8cbf-5720d43d0e7b
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: e7febb44-40c0-4107-9293-bd964b11ed21
+        m_Path: <Keyboard>/5
+        m_Interactions: Tap
+        m_Processors: 
+        m_Groups: 
+        m_Action: Toggle
+        m_Flags: 0
+      m_Flags: 0
   player2: {fileID: 1260093819}
+  p2Actions:
+    ingredient1:
+      m_Name: Ingredient 1
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: c063c79f-74e8-46ca-abd5-82e7d6ad5dff
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 18f5a2c7-f4ae-4097-a7c0-9851583635f3
+        m_Path: <Keyboard>/6
+        m_Interactions: Tap
+        m_Processors: 
+        m_Groups: 
+        m_Action: Ingredient 1
+        m_Flags: 0
+      m_Flags: 0
+    ingredient2:
+      m_Name: Ingredient 2
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: ec5eb169-1be1-4a53-9c84-53296f1195e8
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 395a464c-5c77-465d-8c47-693353b0f953
+        m_Path: <Keyboard>/7
+        m_Interactions: Tap
+        m_Processors: 
+        m_Groups: 
+        m_Action: Ingredient 2
+        m_Flags: 0
+      m_Flags: 0
+    ingredient3:
+      m_Name: Ingredient 3
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: c4ed7f74-82dc-4370-ab0e-d57feed250fb
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 666be27d-3888-4143-a398-9578fd08f73d
+        m_Path: <Keyboard>/8
+        m_Interactions: Tap
+        m_Processors: 
+        m_Groups: 
+        m_Action: Ingredient 3
+        m_Flags: 0
+      m_Flags: 0
+    ingredient4:
+      m_Name: Ingredient 4
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: af2da944-f096-4bad-a6c2-2d4912af04e0
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 60c7c500-5429-4b03-96af-7a2c8cade258
+        m_Path: <Keyboard>/9
+        m_Interactions: Tap
+        m_Processors: 
+        m_Groups: 
+        m_Action: Ingredient 4
+        m_Flags: 0
+      m_Flags: 0
+    toggle:
+      m_Name: Toggle
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: eba8ffee-c603-44d9-8c58-7b5b43e29634
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 51e0e1ea-1034-4fb7-83b8-5c70777ed644
+        m_Path: <Keyboard>/0
+        m_Interactions: Tap
+        m_Processors: 
+        m_Groups: 
+        m_Action: Toggle
+        m_Flags: 0
+      m_Flags: 0
 --- !u!114 &2123412630
 MonoBehaviour:
   m_ObjectHideFlags: 0
