@@ -152,6 +152,12 @@ public class GameUI : MonoBehaviour
         int delta2 = GameManager.Instance.LastDeltas[1];
         if (delta1 != 0) StartCoroutine(ShowDelta(p1DeltaSign, p1DeltaDigits, delta1));
         if (delta2 != 0) StartCoroutine(ShowDelta(p2DeltaSign, p2DeltaDigits, delta2));
+
+        if (GameManager.Instance.CurrentPotion.effectType == PotionEffect.SubtractScore)
+        {
+            if (delta1 != 0) GameManager.Instance.player1.GetComponent<Animator>()?.SetTrigger("Bird_lose");
+            if (delta2 != 0) GameManager.Instance.player2.GetComponent<Animator>()?.SetTrigger("Cat_lose");
+        }
     }
 
     // ── Score / round display ────────────────────────────────────────────
