@@ -6,31 +6,38 @@ using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
+    private static readonly Color ColorGreen  = new Color(0.18f, 0.80f, 0.44f, 0.6f);
+    private static readonly Color ColorYellow = new Color(0.95f, 0.77f, 0.06f, 0.6f);
+
     [Header("Ingredient sprites — Eye, Mushroom, Root, Crystal")]
     public Sprite[] ingredientSprites;
 
     [Header("Toggle sprites — [0] self, [1] opponent")]
     public Sprite[] toggleSprites;
 
+    [Header("Potion slot (1 image)")]
+    public Image potionSlot;
+    public Sprite[] allPotionSprites;
+    public float potionSpinDuration = 1.4f;
+
     [Header("Recipe slots (4 images)")]
     public Image[] recipeSlots;
-    [Tooltip("How fast sprites cycle during spin (seconds per frame)")]
     public float spinInterval = 0.07f;
-    [Tooltip("When each slot stops, left to right")]
     public float[] slotStopTimes = { 0.7f, 1.0f, 1.3f, 1.6f };
 
-    [Header("P1 Cauldron slots (slot 1-4)")]
+    [Header("Score slot flash")]
+    public float flashDuration = 0.4f;
+
+    [Header("P1")]
     public Image[] p1CauldronSlots;
-
-    [Header("P2 Cauldron slots (slot 1-4)")]
-    public Image[] p2CauldronSlots;
-
-    [Header("P1 Inventory")]
+    public Image[] p1ScoreSlots;
     public Image[] p1InventorySlots;
     public Image   p1ToggleSlot;
     public Image   p1CooldownBar;
 
-    [Header("P2 Inventory")]
+    [Header("P2")]
+    public Image[] p2CauldronSlots;
+    public Image[] p2ScoreSlots;
     public Image[] p2InventorySlots;
     public Image   p2ToggleSlot;
     public Image   p2CooldownBar;
@@ -41,6 +48,7 @@ public class GameUI : MonoBehaviour
 
     private bool _subscribed;
     private Coroutine _spinCoroutine;
+    private Coroutine _potionSpinCoroutine;
 
     private void Start()
     {
@@ -49,6 +57,9 @@ public class GameUI : MonoBehaviour
             if (i < p1InventorySlots.Length) p1InventorySlots[i].sprite = ingredientSprites[i];
             if (i < p2InventorySlots.Length) p2InventorySlots[i].sprite = ingredientSprites[i];
         }
+
+        ResetScoreSlots(p1ScoreSlots);
+        ResetScoreSlots(p2ScoreSlots);
     }
 
     private void Update()
@@ -57,7 +68,8 @@ public class GameUI : MonoBehaviour
 
         if (!_subscribed)
         {
-            GameManager.Instance.OnPotionLoaded += OnPotionLoaded;
+            GameManager.Instance.OnPotionLoaded    += OnPotionLoaded;
+            GameManager.Instance.OnRoundEvaluated  += OnRoundEvaluated;
             OnPotionLoaded();
             _subscribed = true;
         }
@@ -74,8 +86,9 @@ public class GameUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (GameManager.Instance != null)
-            GameManager.Instance.OnPotionLoaded -= OnPotionLoaded;
+        if (GameManager.Instance == null) return;
+        GameManager.Instance.OnPotionLoaded   -= OnPotionLoaded;
+        GameManager.Instance.OnRoundEvaluated -= OnRoundEvaluated;
     }
 
     private void OnPotionLoaded()
@@ -83,15 +96,75 @@ public class GameUI : MonoBehaviour
         var potion = GameManager.Instance.CurrentPotion;
         if (potion == null) return;
 
+        ResetScoreSlots(p1ScoreSlots);
+        ResetScoreSlots(p2ScoreSlots);
+
         if (_spinCoroutine != null) StopCoroutine(_spinCoroutine);
         _spinCoroutine = StartCoroutine(SpinRecipe(potion));
+
+        if (_potionSpinCoroutine != null) StopCoroutine(_potionSpinCoroutine);
+        _potionSpinCoroutine = StartCoroutine(SpinPotion(potion));
+    }
+
+    private void OnRoundEvaluated()
+    {
+        ApplySlotColors(p1ScoreSlots, GameManager.Instance.LastResult1);
+        ApplySlotColors(p2ScoreSlots, GameManager.Instance.LastResult2);
+    }
+
+    private void ApplySlotColors(Image[] slots, SlotResult[] results)
+    {
+        if (results == null) return;
+        for (int i = 0; i < slots.Length && i < results.Length; i++)
+        {
+            if (results[i] == SlotResult.None) continue;
+            Color target = results[i] == SlotResult.Green ? ColorGreen : ColorYellow;
+            StartCoroutine(FlashSlot(slots[i], target));
+        }
+    }
+
+    private IEnumerator FlashSlot(Image slot, Color target)
+    {
+        slot.enabled = true;
+        Color bright = new Color(target.r, target.g, target.b, 1f);
+        float elapsed = 0f;
+        while (elapsed < flashDuration)
+        {
+            elapsed += Time.deltaTime;
+            slot.color = Color.Lerp(bright, target, elapsed / flashDuration);
+            yield return null;
+        }
+        slot.color = target;
+    }
+
+    private void ResetScoreSlots(Image[] slots)
+    {
+        foreach (var s in slots) s.enabled = false;
+    }
+
+    private IEnumerator SpinPotion(PotionData potion)
+    {
+        if (potionSlot == null || allPotionSprites.Length == 0) yield break;
+
+        float elapsed = 0f, nextFlip = 0f;
+        while (elapsed < potionSpinDuration)
+        {
+            elapsed += Time.deltaTime;
+            if (elapsed >= nextFlip)
+            {
+                nextFlip += spinInterval;
+                potionSlot.sprite = allPotionSprites[Random.Range(0, allPotionSprites.Length)];
+            }
+            yield return null;
+        }
+        if (potion.potionSprite != null)
+            potionSlot.sprite = potion.potionSprite;
     }
 
     private IEnumerator SpinRecipe(PotionData potion)
     {
         bool[] stopped = new bool[recipeSlots.Length];
-        float elapsed = 0f;
-        float nextFlip = 0f;
+        float elapsed = 0f, nextFlip = 0f;
 
         while (!stopped[recipeSlots.Length - 1])
         {
@@ -102,7 +175,7 @@ public class GameUI : MonoBehaviour
                 if (!stopped[i] && elapsed >= slotStopTimes[i])
                 {
                     stopped[i] = true;
-                    recipeSlots[i].sprite = ingredientSprites[(int)potion.recipe[i]];
+                    recipeSlots[i].sprite  = ingredientSprites[(int)potion.recipe[i]];
                     recipeSlots[i].enabled = true;
                 }
             }
@@ -111,10 +184,8 @@ public class GameUI : MonoBehaviour
             {
                 nextFlip += spinInterval;
                 for (int i = 0; i < recipeSlots.Length; i++)
-                {
                     if (!stopped[i])
                         recipeSlots[i].sprite = ingredientSprites[Random.Range(0, ingredientSprites.Length)];
-                }
             }
 
             yield return null;

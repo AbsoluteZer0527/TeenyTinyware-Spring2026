@@ -44,6 +44,8 @@ public class PotionDatabase : MonoBehaviour
             potion.potionName = t.potionName;
             potion.recipe = combo;
             potion.scoreValue = t.scoreValue;
+            potion.effectType = t.effectType;
+            potion.potionSprite = t.potionSprite;
             _queue.Enqueue(potion);
         }
     }

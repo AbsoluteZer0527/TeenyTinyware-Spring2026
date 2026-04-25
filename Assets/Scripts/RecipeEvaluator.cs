@@ -8,7 +8,6 @@ public static class RecipeEvaluator
         bool[] recipeMatched = new bool[recipe.Length];
         bool[] submittedMatched = new bool[submitted.Count];
 
-        // Pass 1: Greens — correct ingredient in correct slot
         for (int i = 0; i < recipe.Length && i < submitted.Count; i++)
         {
             if (submitted[i] == recipe[i])
@@ -19,7 +18,6 @@ public static class RecipeEvaluator
             }
         }
 
-        // Pass 2: Yellows — correct ingredient in wrong slot
         for (int i = 0; i < submitted.Count; i++)
         {
             if (submittedMatched[i]) continue;
@@ -36,5 +34,39 @@ public static class RecipeEvaluator
         }
 
         return score;
+    }
+
+    public static SlotResult[] EvaluateSlots(IReadOnlyList<IngredientType> submitted, IngredientType[] recipe)
+    {
+        var results = new SlotResult[recipe.Length];
+        bool[] recipeMatched = new bool[recipe.Length];
+        bool[] submittedMatched = new bool[submitted.Count];
+
+        for (int i = 0; i < recipe.Length && i < submitted.Count; i++)
+        {
+            if (submitted[i] == recipe[i])
+            {
+                results[i] = SlotResult.Green;
+                recipeMatched[i] = true;
+                submittedMatched[i] = true;
+            }
+        }
+
+        for (int i = 0; i < submitted.Count; i++)
+        {
+            if (submittedMatched[i]) continue;
+            for (int j = 0; j < recipe.Length; j++)
+            {
+                if (!recipeMatched[j] && submitted[i] == recipe[j])
+                {
+                    results[i] = SlotResult.Yellow;
+                    recipeMatched[j] = true;
+                    submittedMatched[i] = true;
+                    break;
+                }
+            }
+        }
+
+        return results;
     }
 }
