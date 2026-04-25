@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 9ccb6a14c0297a54983bea884cfb27ba
+guid: 220b94e80b1da634ab7486d4990d8cca
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8279152128496038304
-    second: Poster_0
+      213: 814347909515001006
+    second: Sheet-ezgif.com-gif-to-sprite-converter_0
+  - first:
+      213: 2584722688075112562
+    second: Sheet-ezgif.com-gif-to-sprite-converter_1
+  - first:
+      213: 5790113330547448314
+    second: Sheet-ezgif.com-gif-to-sprite-converter_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Poster_0
+      name: Sheet-ezgif.com-gif-to-sprite-converter_0
       rect:
         serializedVersion: 2
-        x: 737
-        y: 323
-        width: 436
-        height: 484
+        x: 739
+        y: 325
+        width: 432
+        height: 479
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 06e0393010b8a1d80800000000000000
-      internalID: -8279152128496038304
+      spriteID: eac393eeb152d4b00800000000000000
+      internalID: 814347909515001006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheet-ezgif.com-gif-to-sprite-converter_1
+      rect:
+        serializedVersion: 2
+        x: 2662
+        y: 324
+        width: 433
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2702c912797ced320800000000000000
+      internalID: 2584722688075112562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sheet-ezgif.com-gif-to-sprite-converter_2
+      rect:
+        serializedVersion: 2
+        x: 4592
+        y: 327
+        width: 437
+        height: 477
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af9d884956d9a5050800000000000000
+      internalID: 5790113330547448314
       vertices: []
       indices: 
       edges: []
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Poster_0: -8279152128496038304
+      Sheet-ezgif.com-gif-to-sprite-converter_0: 814347909515001006
+      Sheet-ezgif.com-gif-to-sprite-converter_1: 2584722688075112562
+      Sheet-ezgif.com-gif-to-sprite-converter_2: 5790113330547448314
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
