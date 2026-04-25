@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -5,6 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public event System.Action OnPotionLoaded;
+    public event System.Action OnRoundEvaluated;
 
     [Header("Setup")]
     public Player player1;
@@ -12,7 +14,12 @@ public class GameManager : MonoBehaviour
     public Cauldron cauldron1;
     public Cauldron cauldron2;
 
+    [Header("Timing")]
+    public float roundEndDelay = 4f;
+
     public PotionData CurrentPotion { get; private set; }
+    public SlotResult[] LastResult1 { get; private set; }
+    public SlotResult[] LastResult2 { get; private set; }
 
     private readonly int[] _totalScores = new int[2];
     private int _filledCount;
@@ -38,15 +45,25 @@ public class GameManager : MonoBehaviour
     {
         _filledCount++;
         if (_filledCount >= 2)
-            EvaluateRound();
+            StartCoroutine(EvaluateRound());
     }
 
-    private void EvaluateRound()
+    private IEnumerator EvaluateRound()
     {
         int score1 = RecipeEvaluator.Evaluate(cauldron1.Ingredients, CurrentPotion.recipe);
         int score2 = RecipeEvaluator.Evaluate(cauldron2.Ingredients, CurrentPotion.recipe);
         int winnerIndex = score2 > score1 ? 1 : 0;
-        _totalScores[winnerIndex] += CurrentPotion.scoreValue;
+
+        int scoreChange = CurrentPotion.effectType == PotionEffect.SubtractScore
+            ? -CurrentPotion.scoreValue
+            :  CurrentPotion.scoreValue;
+        _totalScores[winnerIndex] += scoreChange;
+
+        LastResult1 = RecipeEvaluator.EvaluateSlots(cauldron1.Ingredients, CurrentPotion.recipe);
+        LastResult2 = RecipeEvaluator.EvaluateSlots(cauldron2.Ingredients, CurrentPotion.recipe);
+        OnRoundEvaluated?.Invoke();
+
+        yield return new WaitForSeconds(roundEndDelay);
         LoadNewPotion();
     }
 
