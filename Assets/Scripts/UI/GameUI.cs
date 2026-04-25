@@ -27,6 +27,7 @@ public class GameUI : MonoBehaviour
     [Header("Round display")]
     public Image[]  roundDigitSlots;
     public Sprite[] roundNumberSprites;
+    public float    roundDigitSpacing = 30f;
 
     [Header("P1 Score")]
     public Image   p1ScoreSign;
@@ -75,6 +76,8 @@ public class GameUI : MonoBehaviour
     private static readonly int BirdLoseHash = Animator.StringToHash("Bird_lose");
     private static readonly int CatLoseHash  = Animator.StringToHash("Cat_lose");
 
+    private float _roundCenterX;
+    private float _roundSlotsY;
     private bool      _subscribed;
     private Coroutine _spinCoroutine;
     private Coroutine _potionSpinCoroutine;
@@ -92,6 +95,14 @@ public class GameUI : MonoBehaviour
         ResetScoreSlots(p2ScoreSlots);
         SetDeltaGroupAlpha(p1DeltaSign, p1DeltaDigits, 0f);
         SetDeltaGroupAlpha(p2DeltaSign, p2DeltaDigits, 0f);
+
+        if (roundDigitSlots != null && roundDigitSlots.Length >= 2)
+        {
+            float x0 = roundDigitSlots[0].rectTransform.anchoredPosition.x;
+            float x1 = roundDigitSlots[1].rectTransform.anchoredPosition.x;
+            _roundCenterX = (x0 + x1) * 0.5f;
+            _roundSlotsY  = roundDigitSlots[0].rectTransform.anchoredPosition.y;
+        }
     }
 
     private void Update()
@@ -135,7 +146,7 @@ public class GameUI : MonoBehaviour
         var potion = GameManager.Instance.CurrentPotion;
         if (potion == null) return;
 
-        DisplayNumber(roundDigitSlots, roundNumberSprites, GameManager.Instance.CurrentRound);
+        DisplayRound(GameManager.Instance.CurrentRound);
         ResetScoreSlots(p1ScoreSlots);
         ResetScoreSlots(p2ScoreSlots);
 
@@ -174,6 +185,21 @@ public class GameUI : MonoBehaviour
     }
 
     // ── Score / round display ────────────────────────────────────────────
+
+    private void DisplayRound(int round)
+    {
+        if (roundDigitSlots == null || roundDigitSlots.Length < 2 || roundNumberSprites == null) return;
+        bool twoDigit = round >= 10;
+        float half = roundDigitSpacing * 0.5f;
+
+        roundDigitSlots[0].enabled = twoDigit;
+        roundDigitSlots[0].sprite  = roundNumberSprites[round / 10 % 10];
+        roundDigitSlots[0].rectTransform.anchoredPosition = new Vector2(twoDigit ? _roundCenterX - half : _roundCenterX, _roundSlotsY);
+
+        roundDigitSlots[1].enabled = true;
+        roundDigitSlots[1].sprite  = roundNumberSprites[round % 10];
+        roundDigitSlots[1].rectTransform.anchoredPosition = new Vector2(twoDigit ? _roundCenterX + half : _roundCenterX, _roundSlotsY);
+    }
 
     private void DisplayNumber(Image[] slots, Sprite[] sprites, int number)
     {
