@@ -1,97 +1,37 @@
 fileFormatVersion: 2
-guid: e955701038032bc4f9c0fb115d6b52c0
+guid: fc17d3f6f1a21f641a7eead79b6fdb43
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5731702530048385892
-    second: Green_animation_0
+      213: -3111814433860934983
+    second: Bird_idle-ezgif.com-gif-to-sprite-converter_0
   - first:
-      213: -6049414146466948920
-    second: Green_animation_1
+      213: -427140911494742165
+    second: Bird_idle-ezgif.com-gif-to-sprite-converter_1
   - first:
-      213: -620339884297848229
-    second: Green_animation_2
+      213: 7138182911041601394
+    second: Bird_idle-ezgif.com-gif-to-sprite-converter_2
   - first:
-      213: -4954766681254866852
-    second: Green_animation_3
+      213: 568786238945090560
+    second: Bird_idle-ezgif.com-gif-to-sprite-converter_3
   - first:
-      213: -7467806788404137120
-    second: Green_animation_4
+      213: 3416136981415510090
+    second: Bird_idle-ezgif.com-gif-to-sprite-converter_4
   - first:
-      213: -4302135300819233435
-    second: Green_animation_5
+      213: -262797178991793792
+    second: Bird_idle-ezgif.com-gif-to-sprite-converter_5
   - first:
-      213: -5954609940788150801
-    second: Green_animation_6
+      213: -3479424593716800883
+    second: Bird_idle-ezgif.com-gif-to-sprite-converter_6
   - first:
-      213: -6285421040111238623
-    second: Green_animation_7
+      213: -463085353207532939
+    second: Bird_idle-ezgif.com-gif-to-sprite-converter_7
   - first:
-      213: -3987259995128813906
-    second: Green_animation_8
+      213: -2925791120660446600
+    second: Bird_idle-ezgif.com-gif-to-sprite-converter_8
   - first:
-      213: 1518650415312429184
-    second: Green_animation_9
-  - first:
-      213: -5121770499566243321
-    second: Green_animation_10
-  - first:
-      213: 8313678726101064387
-    second: Green_animation_11
-  - first:
-      213: 2079800613056300373
-    second: Green_animation_12
-  - first:
-      213: 5376883386639946759
-    second: Green_animation_13
-  - first:
-      213: -8642657786405762499
-    second: Green_animation_14
-  - first:
-      213: -6155113535787861777
-    second: Green_animation_15
-  - first:
-      213: -6593480113895842409
-    second: Green_animation_16
-  - first:
-      213: 5521793963375673945
-    second: Green_animation_17
-  - first:
-      213: -1341538458273712780
-    second: Green_animation_18
-  - first:
-      213: -8319574745073042726
-    second: Green_animation_19
-  - first:
-      213: -626578889391316488
-    second: Green_animation_20
-  - first:
-      213: -6533930939278212398
-    second: Green_animation_21
-  - first:
-      213: 1940698086996270570
-    second: Green_animation_22
-  - first:
-      213: 1222655776554629517
-    second: Green_animation_23
-  - first:
-      213: -4942186786095968076
-    second: Green_animation_24
-  - first:
-      213: -4919097771781916692
-    second: Green_animation_25
-  - first:
-      213: -7816348439569833659
-    second: Green_animation_26
-  - first:
-      213: 587343876591480992
-    second: Green_animation_27
-  - first:
-      213: 6043001253989593823
-    second: Green_animation_28
-  - first:
-      213: 6006306676078729165
-    second: Green_animation_29
+      213: -3175884915526635746
+    second: Bird_idle-ezgif.com-gif-to-sprite-converter_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -162,7 +102,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -200,13 +140,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Green_animation_0
+      name: Bird_idle-ezgif.com-gif-to-sprite-converter_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 560
-        height: 673
+        width: 891
+        height: 1080
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,20 +155,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 463edbd45191b8f40800000000000000
-      internalID: 5731702530048385892
+      spriteID: 9b229ce624d90d4d0800000000000000
+      internalID: -3111814433860934983
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green_animation_1
+      name: Bird_idle-ezgif.com-gif-to-sprite-converter_1
       rect:
         serializedVersion: 2
-        x: 560
+        x: 891
         y: 0
-        width: 560
-        height: 673
+        width: 891
+        height: 1080
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +177,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8c85d9c82e92c0ca0800000000000000
-      internalID: -6049414146466948920
+      spriteID: b6fb155aa9d721af0800000000000000
+      internalID: -427140911494742165
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green_animation_2
+      name: Bird_idle-ezgif.com-gif-to-sprite-converter_2
       rect:
         serializedVersion: 2
-        x: 1120
+        x: 1782
         y: 0
-        width: 560
-        height: 673
+        width: 891
+        height: 1080
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,20 +199,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5a7b64792c1467f0800000000000000
-      internalID: -620339884297848229
+      spriteID: 27ff562b98bef0360800000000000000
+      internalID: 7138182911041601394
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green_animation_3
+      name: Bird_idle-ezgif.com-gif-to-sprite-converter_3
       rect:
         serializedVersion: 2
-        x: 1680
+        x: 2673
         y: 0
-        width: 560
-        height: 673
+        width: 891
+        height: 1080
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c50dcd274f12d3bb0800000000000000
-      internalID: -4954766681254866852
+      spriteID: 00cd37d121cb4e700800000000000000
+      internalID: 568786238945090560
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green_animation_4
+      name: Bird_idle-ezgif.com-gif-to-sprite-converter_4
       rect:
         serializedVersion: 2
-        x: 2240
+        x: 3564
         y: 0
-        width: 560
-        height: 673
+        width: 891
+        height: 1080
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -303,20 +243,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 063bbe5ca450d5890800000000000000
-      internalID: -7467806788404137120
+      spriteID: a40c8513c7e886f20800000000000000
+      internalID: 3416136981415510090
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green_animation_5
+      name: Bird_idle-ezgif.com-gif-to-sprite-converter_5
       rect:
         serializedVersion: 2
-        x: 2800
+        x: 4455
         y: 0
-        width: 560
-        height: 673
+        width: 891
+        height: 1080
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,20 +265,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5655003dcbebb44c0800000000000000
-      internalID: -4302135300819233435
+      spriteID: 089283aab5b5a5cf0800000000000000
+      internalID: -262797178991793792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green_animation_6
+      name: Bird_idle-ezgif.com-gif-to-sprite-converter_6
       rect:
         serializedVersion: 2
-        x: 3360
+        x: 5346
         y: 0
-        width: 560
-        height: 673
+        width: 891
+        height: 1080
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -347,20 +287,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fedff47cec9fc5da0800000000000000
-      internalID: -5954609940788150801
+      spriteID: d8290cc44c996bfc0800000000000000
+      internalID: -3479424593716800883
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Green_animation_7
+      name: Bird_idle-ezgif.com-gif-to-sprite-converter_7
       rect:
         serializedVersion: 2
-        x: 3920
+        x: 6237
         y: 0
-        width: 560
-        height: 673
+        width: 891
+        height: 1080
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -369,8 +309,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 12247689dd2b5c8a0800000000000000
-      internalID: -6285421040111238623
+      spriteID: 572f065235ac299f0800000000000000
+      internalID: -463085353207532939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_idle-ezgif.com-gif-to-sprite-converter_8
+      rect:
+        serializedVersion: 2
+        x: 7128
+        y: 0
+        width: 891
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 872ca0e2a708567d0800000000000000
+      internalID: -2925791120660446600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bird_idle-ezgif.com-gif-to-sprite-converter_9
+      rect:
+        serializedVersion: 2
+        x: 8019
+        y: 0
+        width: 891
+        height: 1080
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1f6382fe7dfce3d0800000000000000
+      internalID: -3175884915526635746
       vertices: []
       indices: 
       edges: []
@@ -379,7 +363,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8b9d178da578e9d4ebf9dfddc2f983f8
+    spriteID: e3afd7e4842d0a64dac923157b21dbda
     internalID: 0
     vertices: []
     indices: 
@@ -389,16 +373,18 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":1.0},"gridSpriteSize":{"x":560.0,"y":673.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":10.0,"y":1.0},"gridSpriteSize":{"x":891.0,"y":1080.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Green_animation_0: 5731702530048385892
-      Green_animation_1: -6049414146466948920
-      Green_animation_2: -620339884297848229
-      Green_animation_3: -4954766681254866852
-      Green_animation_4: -7467806788404137120
-      Green_animation_5: -4302135300819233435
-      Green_animation_6: -5954609940788150801
-      Green_animation_7: -6285421040111238623
+      Bird_idle-ezgif.com-gif-to-sprite-converter_0: -3111814433860934983
+      Bird_idle-ezgif.com-gif-to-sprite-converter_1: -427140911494742165
+      Bird_idle-ezgif.com-gif-to-sprite-converter_2: 7138182911041601394
+      Bird_idle-ezgif.com-gif-to-sprite-converter_3: 568786238945090560
+      Bird_idle-ezgif.com-gif-to-sprite-converter_4: 3416136981415510090
+      Bird_idle-ezgif.com-gif-to-sprite-converter_5: -262797178991793792
+      Bird_idle-ezgif.com-gif-to-sprite-converter_6: -3479424593716800883
+      Bird_idle-ezgif.com-gif-to-sprite-converter_7: -463085353207532939
+      Bird_idle-ezgif.com-gif-to-sprite-converter_8: -2925791120660446600
+      Bird_idle-ezgif.com-gif-to-sprite-converter_9: -3175884915526635746
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
