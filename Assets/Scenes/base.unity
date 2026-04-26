@@ -3169,6 +3169,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2123412630}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &790249159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4684,6 +4696,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1776001208}
+  - {fileID: 1867806369}
   - {fileID: 1002752465}
   - {fileID: 1431562161}
   - {fileID: 2085553033}
@@ -9021,6 +9034,7 @@ MonoBehaviour:
   p2ScrambleIcon: {fileID: 1612624387}
   p2CooldownIcon: {fileID: 1646568882}
   strobeSpeed: 6
+  homepagePanel: {fileID: 39658747}
 --- !u!1 &2134959866
 GameObject:
   m_ObjectHideFlags: 0
