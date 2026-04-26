@@ -87,7 +87,6 @@ public class GameUI : MonoBehaviour
     public GameObject endPanel;
     public GameObject p1WinDisplay;
     public GameObject p2WinDisplay;
-    public GameObject tieDisplay;
 
     private static readonly int BirdLoseHash = Animator.StringToHash("Bird_lose");
     private static readonly int CatLoseHash  = Animator.StringToHash("Cat_lose");
@@ -102,8 +101,10 @@ public class GameUI : MonoBehaviour
 
     private void Start()
     {
-        if (homepagePanel != null) homepagePanel.SetActive(true);
-        if (endPanel      != null) endPanel.SetActive(false);
+        if (homepagePanel  != null) homepagePanel.SetActive(true);
+        if (endPanel       != null) endPanel.SetActive(false);
+        if (p1WinDisplay   != null) p1WinDisplay.SetActive(false);
+        if (p2WinDisplay   != null) p2WinDisplay.SetActive(false);
         ResetScoreSlots(p1ScoreSlots);
         ResetScoreSlots(p2ScoreSlots);
         SetDeltaGroupAlpha(p1DeltaSign, p1DeltaDigits, 0f);
@@ -209,10 +210,13 @@ public class GameUI : MonoBehaviour
 
     public void OnRematchPressed()
     {
-        if (endPanel != null) endPanel.SetActive(false);
+        if (endPanel     != null) endPanel.SetActive(false);
+        if (p1WinDisplay != null) p1WinDisplay.SetActive(false);
+        if (p2WinDisplay != null) p2WinDisplay.SetActive(false);
         _displayedScore1 = 0f;
         _displayedScore2 = 0f;
         GameManager.Instance.Rematch();
+        if (AudioManager.Instance != null) AudioManager.Instance.RestartBGM();
         if (homepagePanel != null) homepagePanel.SetActive(true);
     }
 
@@ -221,9 +225,8 @@ public class GameUI : MonoBehaviour
         if (endPanel != null) endPanel.SetActive(true);
         int s1 = GameManager.Instance.GetScore(0);
         int s2 = GameManager.Instance.GetScore(1);
-        if (p1WinDisplay != null) p1WinDisplay.SetActive(s1 > s2);
+        if (p1WinDisplay != null) p1WinDisplay.SetActive(s1 >= s2);
         if (p2WinDisplay != null) p2WinDisplay.SetActive(s2 > s1);
-        if (tieDisplay   != null) tieDisplay.SetActive(s1 == s2);
     }
 
     // ── Score / round display ────────────────────────────────────────────

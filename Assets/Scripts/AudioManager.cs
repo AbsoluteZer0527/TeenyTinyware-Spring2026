@@ -71,6 +71,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void RestartBGM()
+    {
+        if (_bgmSource.clip != null) { _bgmSource.Stop(); _bgmSource.Play(); }
+    }
+
     public void PlaySFX(AudioClip clip)
     {
         if (clip == null) return;
