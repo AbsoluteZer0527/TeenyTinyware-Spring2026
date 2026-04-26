@@ -41,11 +41,13 @@ public class PotionDatabase : MonoBehaviour
         {
             var t = templates[rng.Next(templates.Length)];
             var potion = ScriptableObject.CreateInstance<PotionData>();
-            potion.potionName = t.potionName;
-            potion.recipe = combo;
-            potion.scoreValue = t.scoreValue;
-            potion.effectType = t.effectType;
-            potion.potionSprite = t.potionSprite;
+            potion.potionName    = t.potionName;
+            potion.recipe        = combo;
+            potion.scoreValue    = t.scoreValue;
+            potion.effectType    = t.effectType;
+            potion.potionSprite  = t.potionSprite;
+            potion.effectDuration = t.effectDuration;
+            potion.effectStrength = t.effectStrength;
             _queue.Enqueue(potion);
         }
     }

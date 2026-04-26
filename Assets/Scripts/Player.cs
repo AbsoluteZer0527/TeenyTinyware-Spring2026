@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     private float _cooldownTimer;
 
     public bool  IsOnCooldown    => _cooldownTimer > 0f;
-    public float CooldownFraction => IsOnCooldown ? _cooldownTimer / (baseCooldown * CooldownMultiplier) : 0f;
+    public float CooldownFraction => IsOnCooldown ? _cooldownTimer / baseCooldown : 0f;
 
     private void Update()
     {
@@ -45,24 +45,35 @@ public class Player : MonoBehaviour
     {
         ScrambleRoundsLeft = rounds;
         IngredientOrder = new int[] { 0, 1, 2, 3 };
-        for (int i = 3; i > 0; i--)
-        {
-            int j = Random.Range(0, i + 1);
-            (IngredientOrder[i], IngredientOrder[j]) = (IngredientOrder[j], IngredientOrder[i]);
-        }
+        Shuffle();
     }
 
     public void ApplyCooldownBoost(float multiplier, int rounds)
     {
-        CooldownMultiplier    = multiplier;
+        CooldownMultiplier      = multiplier;
         CooldownBoostRoundsLeft = rounds;
     }
 
     public void OnRoundStart()
     {
-        if (ScrambleRoundsLeft > 0 && --ScrambleRoundsLeft == 0)
-            IngredientOrder = new int[] { 0, 1, 2, 3 };
+        if (ScrambleRoundsLeft > 0)
+        {
+            --ScrambleRoundsLeft;
+            if (ScrambleRoundsLeft == 0)
+                IngredientOrder = new int[] { 0, 1, 2, 3 };
+            else
+                Shuffle();
+        }
         if (CooldownBoostRoundsLeft > 0 && --CooldownBoostRoundsLeft == 0)
             CooldownMultiplier = 1f;
+    }
+
+    private void Shuffle()
+    {
+        for (int i = 3; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            (IngredientOrder[i], IngredientOrder[j]) = (IngredientOrder[j], IngredientOrder[i]);
+        }
     }
 }

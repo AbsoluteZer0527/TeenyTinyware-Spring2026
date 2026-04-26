@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48afcae9dd4d14da58b985d10d33d6a1, type: 3}
-  m_Name: Scramble Potion
+  m_Name: CooldownDownPotion
   m_EditorClassIdentifier: Assembly-CSharp::PotionData
-  potionName: ScramblePotion
-  recipe: 00000000020000000000000003000000
-  scoreValue: 300
-  effectType: 2
-  potionSprite: {fileID: 6997616985800771554, guid: abcad2c00f08606478cac2bc58a026f4, type: 3}
+  potionName: CooldownDown
+  recipe: 02000000010000000300000000000000
+  scoreValue: 50
+  effectType: 3
+  potionSprite: {fileID: -3065595510956808684, guid: abcad2c00f08606478cac2bc58a026f4, type: 3}
   effectDuration: 2
-  effectStrength: 0
+  effectStrength: 0.5

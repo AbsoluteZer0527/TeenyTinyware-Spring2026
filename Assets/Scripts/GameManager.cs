@@ -73,7 +73,6 @@ public class GameManager : MonoBehaviour
         _totalScores[1] += LastDeltas[1];
 
         Player winner = winnerIndex == 0 ? player1 : player2;
-        Player loser  = winnerIndex == 0 ? player2 : player1;
         switch (CurrentPotion.effectType)
         {
             case PotionEffect.ScrambleInputs:
