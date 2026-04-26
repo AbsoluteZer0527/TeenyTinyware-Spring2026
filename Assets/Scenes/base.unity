@@ -3520,7 +3520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &747866117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4753,6 +4753,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 96ee44df7cc9b4c158122cf4e5adeb6c, type: 3}
     - target: {fileID: 7339682770730318541, guid: 0649f5dd38c814c0785a1dddc1db2bfe, type: 3}
+      propertyPath: plop2Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2119a95f8e2f8114e8dfef1d9a2168b0, type: 3}
+    - target: {fileID: 7339682770730318541, guid: 0649f5dd38c814c0785a1dddc1db2bfe, type: 3}
+      propertyPath: plop3Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: dc3af4099fe1d0740bb4d419248fd8e0, type: 3}
+    - target: {fileID: 7339682770730318541, guid: 0649f5dd38c814c0785a1dddc1db2bfe, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1249270536}
@@ -5953,6 +5961,14 @@ PrefabInstance:
       propertyPath: plopClip
       value: 
       objectReference: {fileID: 8300000, guid: 96ee44df7cc9b4c158122cf4e5adeb6c, type: 3}
+    - target: {fileID: 7339682770730318541, guid: 0649f5dd38c814c0785a1dddc1db2bfe, type: 3}
+      propertyPath: plop2Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2119a95f8e2f8114e8dfef1d9a2168b0, type: 3}
+    - target: {fileID: 7339682770730318541, guid: 0649f5dd38c814c0785a1dddc1db2bfe, type: 3}
+      propertyPath: plop3Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: dc3af4099fe1d0740bb4d419248fd8e0, type: 3}
     - target: {fileID: 7339682770730318541, guid: 0649f5dd38c814c0785a1dddc1db2bfe, type: 3}
       propertyPath: ownerIndex
       value: 1
@@ -8474,15 +8490,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   bgmClip: {fileID: 8300000, guid: b36b658bea2e84bb69a51b659efc1545, type: 3}
   bubbleClip: {fileID: 8300000, guid: e347e57cdc58d4669895ea70e71f947b, type: 3}
-  p1LoseClip: {fileID: 8300000, guid: 50c5350aba83648e8b0b9ce51f3b02cb, type: 3}
+  p1LoseClip: {fileID: 8300000, guid: f16410c9d8aa90d40be41e6802bc8ef8, type: 3}
   p2LoseClip: {fileID: 8300000, guid: 49a02cd9b40ed4fc69cef51a2558eeb6, type: 3}
-  scoreUpClip: {fileID: 0}
-  scoreDownClip: {fileID: 0}
-  spinClip: {fileID: 0}
-  switchClip: {fileID: 0}
-  catIdleClip: {fileID: 0}
+  scoreUpClip: {fileID: 8300000, guid: 74284b806e155b84bb7693637f9cd95e, type: 3}
+  scoreDownClip: {fileID: 8300000, guid: 1b19bba799275314c9d2ce4c7dbf6596, type: 3}
+  spinClip: {fileID: 8300000, guid: 7a4c23db7f0d05042a5d04d3b9378c99, type: 3}
+  switchClip: {fileID: 8300000, guid: 6f8dc2a35a309f94dbae389809557fcf, type: 3}
+  catIdleClip: {fileID: 8300000, guid: 7edbc770857ecca47a01d8da2dc842ee, type: 3}
   catIdleInterval: {x: 6, y: 14}
-  crowIdleClip: {fileID: 0}
+  crowIdleClip: {fileID: 8300000, guid: 5b41a6735387e3244ba086aea56fc229, type: 3}
   crowIdleInterval: {x: 8, y: 18}
 --- !u!4 &1705057104
 Transform:
