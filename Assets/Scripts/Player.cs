@@ -68,6 +68,14 @@ public class Player : MonoBehaviour
             CooldownMultiplier = 1f;
     }
 
+    public void ResetEffects()
+    {
+        IngredientOrder         = new int[] { 0, 1, 2, 3 };
+        ScrambleRoundsLeft      = 0;
+        CooldownMultiplier      = 1f;
+        CooldownBoostRoundsLeft = 0;
+    }
+
     private void Shuffle()
     {
         for (int i = 3; i > 0; i--)

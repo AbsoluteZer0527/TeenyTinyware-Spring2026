@@ -57,4 +57,10 @@ public class PotionDatabase : MonoBehaviour
         if (_queue.Count == 0) GenerateQueue();
         return _queue.Dequeue();
     }
+
+    public void Regenerate()
+    {
+        seed = Random.Range(0, int.MaxValue);
+        GenerateQueue();
+    }
 }
