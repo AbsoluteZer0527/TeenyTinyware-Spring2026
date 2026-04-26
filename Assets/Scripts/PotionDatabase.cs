@@ -14,7 +14,7 @@ public class PotionDatabase : MonoBehaviour
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
-        GenerateQueue();
+        Regenerate();
     }
 
     private void GenerateQueue()
