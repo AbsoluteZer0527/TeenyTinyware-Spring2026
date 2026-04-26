@@ -83,6 +83,12 @@ public class GameUI : MonoBehaviour
     [Header("Homepage")]
     public GameObject homepagePanel;
 
+    [Header("End Screen")]
+    public GameObject endPanel;
+    public GameObject p1WinDisplay;
+    public GameObject p2WinDisplay;
+    public GameObject tieDisplay;
+
     private static readonly int BirdLoseHash = Animator.StringToHash("Bird_lose");
     private static readonly int CatLoseHash  = Animator.StringToHash("Cat_lose");
 
@@ -97,6 +103,7 @@ public class GameUI : MonoBehaviour
     private void Start()
     {
         if (homepagePanel != null) homepagePanel.SetActive(true);
+        if (endPanel      != null) endPanel.SetActive(false);
         ResetScoreSlots(p1ScoreSlots);
         ResetScoreSlots(p2ScoreSlots);
         SetDeltaGroupAlpha(p1DeltaSign, p1DeltaDigits, 0f);
@@ -119,6 +126,7 @@ public class GameUI : MonoBehaviour
         {
             GameManager.Instance.OnPotionLoaded   += OnPotionLoaded;
             GameManager.Instance.OnRoundEvaluated += OnRoundEvaluated;
+            GameManager.Instance.OnGameOver       += OnGameOver;
             OnPotionLoaded();
             _subscribed = true;
         }
@@ -147,6 +155,7 @@ public class GameUI : MonoBehaviour
         if (GameManager.Instance == null) return;
         GameManager.Instance.OnPotionLoaded   -= OnPotionLoaded;
         GameManager.Instance.OnRoundEvaluated -= OnRoundEvaluated;
+        GameManager.Instance.OnGameOver       -= OnGameOver;
     }
 
     private void OnPotionLoaded()
@@ -196,6 +205,25 @@ public class GameUI : MonoBehaviour
     {
         if (homepagePanel != null) homepagePanel.SetActive(false);
         GameManager.Instance.StartGame();
+    }
+
+    public void OnRematchPressed()
+    {
+        if (endPanel != null) endPanel.SetActive(false);
+        _displayedScore1 = 0f;
+        _displayedScore2 = 0f;
+        GameManager.Instance.Rematch();
+        if (homepagePanel != null) homepagePanel.SetActive(true);
+    }
+
+    private void OnGameOver()
+    {
+        if (endPanel != null) endPanel.SetActive(true);
+        int s1 = GameManager.Instance.GetScore(0);
+        int s2 = GameManager.Instance.GetScore(1);
+        if (p1WinDisplay != null) p1WinDisplay.SetActive(s1 > s2);
+        if (p2WinDisplay != null) p2WinDisplay.SetActive(s2 > s1);
+        if (tieDisplay   != null) tieDisplay.SetActive(s1 == s2);
     }
 
     // ── Score / round display ────────────────────────────────────────────

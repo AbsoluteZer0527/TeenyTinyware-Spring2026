@@ -100,6 +100,7 @@ public class GameManager : MonoBehaviour
 
         if (CurrentRound >= maxRounds)
         {
+            IsPlaying = false;
             OnGameOver?.Invoke();
             yield break;
         }
@@ -119,4 +120,20 @@ public class GameManager : MonoBehaviour
     }
 
     public int GetScore(int playerIndex) => _totalScores[playerIndex];
+
+    public void Rematch()
+    {
+        StopAllCoroutines();
+        _totalScores[0] = _totalScores[1] = 0;
+        CurrentRound    = 1;
+        _filledCount    = 0;
+        LastDeltas[0]   = LastDeltas[1] = 0;
+        LastResult1     = null;
+        LastResult2     = null;
+        player1.ResetEffects();
+        player2.ResetEffects();
+        cauldron1.Clear();
+        cauldron2.Clear();
+        PotionDatabase.Instance.Regenerate();
+    }
 }
