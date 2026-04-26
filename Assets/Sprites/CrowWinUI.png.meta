@@ -140,12 +140,12 @@ TextureImporter:
       name: CrowWinUI_0
       rect:
         serializedVersion: 2
-        x: 1221
-        y: 489
-        width: 668
-        height: 425
+        x: 1085
+        y: 164
+        width: 805
+        height: 773
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -159,125 +159,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrowWinUI_1
-      rect:
-        serializedVersion: 2
-        x: 1729
-        y: 285
-        width: 121
-        height: 255
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 40244539f28f1c840800000000000000
-      internalID: 5242744324454892036
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CrowWinUI_2
-      rect:
-        serializedVersion: 2
-        x: 518
-        y: 103
-        width: 164
-        height: 145
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fd195f3ef91551e30800000000000000
-      internalID: 4473571552028627423
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CrowWinUI_3
-      rect:
-        serializedVersion: 2
-        x: 688
-        y: 10
-        width: 346
-        height: 220
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4d614fc5cf6a852c0800000000000000
-      internalID: -4442617429579524396
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CrowWinUI_4
-      rect:
-        serializedVersion: 2
-        x: 1144
-        y: 214
-        width: 564
-        height: 271
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5c14fcd647899e810800000000000000
-      internalID: 1795133552309780933
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CrowWinUI_5
-      rect:
-        serializedVersion: 2
-        x: 1719
-        y: 190
-        width: 99
-        height: 103
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 345a54b679fa47150800000000000000
-      internalID: 5869509279245247811
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: CrowWinUI_6
       rect:
         serializedVersion: 2
-        x: 11
-        y: 73
-        width: 337
-        height: 137
+        x: 0
+        y: 0
+        width: 1046
+        height: 299
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -291,28 +181,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CrowWinUI_7
-      rect:
-        serializedVersion: 2
-        x: 346
-        y: 55
-        width: 175
-        height: 145
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 78a01cb7955a0ff80800000000000000
-      internalID: -8074772328128378233
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: CrowWinUI_8
       rect:
         serializedVersion: 2
@@ -321,7 +189,7 @@ TextureImporter:
         width: 521
         height: 146
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -338,7 +206,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8161a2b82184032479e8584219e2c5b8
     internalID: 0
     vertices: []
     indices: 
