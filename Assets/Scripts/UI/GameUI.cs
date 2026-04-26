@@ -80,6 +80,9 @@ public class GameUI : MonoBehaviour
     [Header("Status effect strobe")]
     public float strobeSpeed = 4f;
 
+    [Header("Homepage")]
+    public GameObject homepagePanel;
+
     private static readonly int BirdLoseHash = Animator.StringToHash("Bird_lose");
     private static readonly int CatLoseHash  = Animator.StringToHash("Cat_lose");
 
@@ -93,6 +96,7 @@ public class GameUI : MonoBehaviour
 
     private void Start()
     {
+        if (homepagePanel != null) homepagePanel.SetActive(true);
         ResetScoreSlots(p1ScoreSlots);
         ResetScoreSlots(p2ScoreSlots);
         SetDeltaGroupAlpha(p1DeltaSign, p1DeltaDigits, 0f);
@@ -186,6 +190,12 @@ public class GameUI : MonoBehaviour
                 if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(AudioManager.Instance.p2LoseClip);
             }
         }
+    }
+
+    public void OnPlayPressed()
+    {
+        if (homepagePanel != null) homepagePanel.SetActive(false);
+        GameManager.Instance.StartGame();
     }
 
     // ── Score / round display ────────────────────────────────────────────

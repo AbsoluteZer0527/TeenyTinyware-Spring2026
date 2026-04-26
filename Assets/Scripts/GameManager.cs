@@ -36,14 +36,22 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
+    public bool IsPlaying { get; private set; }
+
     private void Start()
     {
-        player1.OwnCauldron = cauldron1;
+        player1.OwnCauldron      = cauldron1;
         player1.OpponentCauldron = cauldron2;
-        player2.OwnCauldron = cauldron2;
+        player2.OwnCauldron      = cauldron2;
         player2.OpponentCauldron = cauldron1;
         cauldron1.ownerIndex = 0;
         cauldron2.ownerIndex = 1;
+    }
+
+    public void StartGame()
+    {
+        if (IsPlaying) return;
+        IsPlaying = true;
         LoadNewPotion();
     }
 
