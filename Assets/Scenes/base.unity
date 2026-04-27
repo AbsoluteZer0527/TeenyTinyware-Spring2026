@@ -3217,7 +3217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &747866117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4633,9 +4633,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.89019614, g: 0.9568628, b: 0, a: 1}
-    m_PressedColor: {r: 0.27897573, g: 0.4671453, b: 1, a: 1}
-    m_SelectedColor: {r: 1, g: 0.9407395, b: 0, a: 1}
+    m_HighlightedColor: {r: 0.2784314, g: 0.46666667, b: 1, a: 1}
+    m_PressedColor: {r: 0.882353, g: 0.95294124, b: 0, a: 1}
+    m_SelectedColor: {r: 0.2784314, g: 0.46666667, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1.41
     m_FadeDuration: 0.1
@@ -7811,8 +7811,8 @@ MonoBehaviour:
   switchClip: {fileID: 8300000, guid: 6f8dc2a35a309f94dbae389809557fcf, type: 3}
   catIdleClip: {fileID: 8300000, guid: 7edbc770857ecca47a01d8da2dc842ee, type: 3}
   catIdleInterval: {x: 6, y: 14}
-  crowIdleClip: {fileID: 8300000, guid: 5b41a6735387e3244ba086aea56fc229, type: 3}
-  crowIdleInterval: {x: 8, y: 18}
+  crowIdleClip: {fileID: 8300000, guid: 8f18ec32b9e702d4eaa691d6cc29fbaa, type: 3}
+  crowIdleInterval: {x: 4, y: 18}
 --- !u!4 &1705057104
 Transform:
   m_ObjectHideFlags: 0

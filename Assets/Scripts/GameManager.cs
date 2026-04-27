@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     private readonly int[] _totalScores = new int[2];
     private int _filledCount;
+    private int _firstFilledOwner = -1;
 
     private void Awake()
     {
@@ -55,8 +56,9 @@ public class GameManager : MonoBehaviour
         LoadNewPotion();
     }
 
-    public void OnCauldronFull(Cauldron _)
+    public void OnCauldronFull(Cauldron c)
     {
+        if (_filledCount == 0) _firstFilledOwner = c.ownerIndex;
         _filledCount++;
         if (_filledCount >= 2)
             StartCoroutine(EvaluateRound());
@@ -69,7 +71,9 @@ public class GameManager : MonoBehaviour
 
         int score1 = RecipeEvaluator.Evaluate(cauldron1.Ingredients, CurrentPotion.recipe);
         int score2 = RecipeEvaluator.Evaluate(cauldron2.Ingredients, CurrentPotion.recipe);
-        int winnerIndex = score2 > score1 ? 1 : 0;
+        int winnerIndex = score1 > score2 ? 0
+                        : score2 > score1 ? 1
+                        : _firstFilledOwner; // tie → faster cauldron wins
 
         int scoreChange = CurrentPotion.effectType == PotionEffect.SubtractScore
             ? -CurrentPotion.scoreValue
@@ -111,7 +115,8 @@ public class GameManager : MonoBehaviour
 
     private void LoadNewPotion()
     {
-        _filledCount = 0;
+        _filledCount      = 0;
+        _firstFilledOwner = -1;
         cauldron1.Clear();
         cauldron2.Clear();
         CurrentPotion = PotionDatabase.Instance.GetNextPotion();
@@ -126,8 +131,9 @@ public class GameManager : MonoBehaviour
         StopAllCoroutines();
         _totalScores[0] = _totalScores[1] = 0;
         CurrentRound    = 1;
-        _filledCount    = 0;
-        LastDeltas[0]   = LastDeltas[1] = 0;
+        _filledCount      = 0;
+        _firstFilledOwner = -1;
+        LastDeltas[0]     = LastDeltas[1] = 0;
         LastResult1     = null;
         LastResult2     = null;
         player1.ResetEffects();
